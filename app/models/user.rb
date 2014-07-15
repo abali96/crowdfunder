@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :campaigns
+  has_many :pledges
+  has_many :rewards, through: :pledges
   authenticates_with_sorcery!
 
   validates_confirmation_of :password

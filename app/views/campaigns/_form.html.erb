@@ -1,0 +1,27 @@
+<%= form_for @campaign do |f| %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :goal %>
+    <%= f.number_field :goal %>
+  </div>
+  <div>
+    <%= f.label :start_time %>
+    <%= f.datetime_select(:start_time) %>
+  </div>
+  <div>
+    <%= f.label :end_time %>
+    <%= f.datetime_select(:end_time) %>
+  </div>
+    <div>
+    <%= f.submit :submit %>
+  </div>
+
+<% end %>
