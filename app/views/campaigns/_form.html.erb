@@ -20,9 +20,10 @@
     <%= f.label :end_time %>
     <%= f.datetime_select(:end_time) %>
   </div>
-    <div>
+  <div>
     <%= f.submit :submit %>
   </div>
+
   <h3>Rewards</h3>
   <div>
     <%= f.fields_for :rewards do |reward| %>
