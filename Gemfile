@@ -40,3 +40,4 @@ gem 'sorcery'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'cocoon'
