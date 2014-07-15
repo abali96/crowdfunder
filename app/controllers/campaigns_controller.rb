@@ -7,6 +7,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @rewards = @campaign.rewards.all
   end
 
 

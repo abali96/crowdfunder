@@ -1,2 +1,16 @@
-  <p><%= @campaign.name %></p>
-  <p><%= @campaign.description %><p>
+<h1><%= @campaign.name %></h1>
+<p>Goal: <%= @campaign.goal %></p>
+<p><%= @campaign.description %><p>
+<p>Campaign started on <%= @campaign.start_time %><p>
+<p>Campaign ends at <%= @campaign.end_time %><p>
+<p>Created by: <%= @campaign.user_id %><p>
+<p>Campaign was created by <%= @campaign.user_id %><p>
+<p>Campaign was last updated on <%= @campaign.updated_at %><p>
+<p></p>
+
+<h2>Rewards</h2>
+<% @rewards.each do |r| %>
+  <p id="<%= r.id %>"><%= r.name %></p>
+  <p><%= r.description %></p>
+  <p><%= r.amount %></p>
+<% end %>
