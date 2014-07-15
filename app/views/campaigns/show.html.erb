@@ -4,6 +4,11 @@
 <p>Campaign started on <%= @campaign.start_time %><p>
 <p>Campaign ends at <%= @campaign.end_time %><p>
 <p>Created by: <%= @campaign.user_id %><p>
+  <% if @campaign.end_time < Time.now %>
+    <p>Campaign over!</p>
+  <% else %>
+    <p><%= ((@campaign.end_time - Time.now)/86400).round %> days to go</p>
+  <% end %>
 <p>Campaign was created by <%= @campaign.user_id %><p>
 <p>Campaign was last updated on <%= @campaign.updated_at %><p>
 <p></p>
