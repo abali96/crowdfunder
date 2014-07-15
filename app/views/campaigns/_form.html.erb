@@ -20,8 +20,17 @@
     <%= f.label :end_time %>
     <%= f.datetime_select(:end_time) %>
   </div>
-    <div>
+  <div>
     <%= f.submit :submit %>
   </div>
 
+  <h3>Rewards</h3>
+  <div>
+    <%= f.fields_for :rewards do |reward| %>
+      <%= render 'reward_fields', :f => reward %>
+    <% end %>
+    <div>
+      <%= link_to_add_association 'Add Reward', f, :rewards %>
+    </div>
+  </div>
 <% end %>
