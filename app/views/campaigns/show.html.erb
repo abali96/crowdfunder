@@ -1,23 +1,27 @@
 <h1><%= @campaign.name %></h1>
-<p>Goal: <%= @campaign.goal %></p>
-<p><%= @campaign.description %><p>
-<p>Campaign started on <%= @campaign.start_time %><p>
-<p>Campaign ends at <%= @campaign.end_time %><p>
-<p>Created by: <%= @campaign.user.email %><p>
-  <% if @campaign.end_time < Time.now %>
-    <p>Campaign over!</p>
-  <% else %>
-    <p><%= ((@campaign.end_time - Time.now)/86400).round %> days to go</p>
-  <% end %>
-<p>Campaign was created by <%= @campaign.user.email %><p>
-<p>Campaign was last updated on <%= @campaign.updated_at %><p>
- <div id = "total_earned"><h1> Total earned to date: $<%= @totals %></h1> </div>
- <div> <% if @pledge_status == true %> 
-        <h1> YOU HAVE DONATED </h1>
-      <% else %>
-        <h1> DO YOU WANT TO DONATE? </h1>
-      <% end %>
-</div>
+  <p>Goal: <%= @campaign.goal %></p>
+  <p><%= @campaign.description %><p>
+  <p>Campaign started on <%= @campaign.start_time %><p>
+  <p>Campaign ends at <%= @campaign.end_time %><p>
+  <p>Created by: <%= @campaign.user.email %><p>
+    <% if @campaign.end_date < Time.now %>
+      <p>Campaign over!</p>
+    <% else %>
+      <p><%= (@campaign.end_date - Date.today).round %> days to go</p>
+    <% end %>
+  <p>Campaign was created by <%= @campaign.user.email %><p>
+  <p>Campaign was last updated on <%= @campaign.updated_at %><p>
+  <div id = "total_earned">
+    <h1> Total earned to date: $<%= @totals %>
+    </h1>
+  </div>
+  <div>
+    <% if @pledge_status == true %>
+      <p> You have donated. </p>
+    <% else %>
+      <p> Do you want to donate? </p>
+    <% end %>
+  </div>
 
 
 <h2>Rewards</h2>
@@ -25,8 +29,8 @@
   <% @rewards.each do |r| %>
   <p id="<%= r.id %>"><button><%= r.name %> </button></p>
   <p><%= r.description %></p>
-  <p><%= r.amount %></p>
-  <p>Amount earned to date: <%= ((@pledges.where(:reward_id => r.id).count) * r.amount)%>
+  <p>$<%= r.amount %></p>
+  <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count))%>
   <% @total += ((@pledges.where(:reward_id => r.id).count) * r.amount)%>
 
  <div id="dialog<%=r.id%>" title="Back this Campaign">
@@ -60,7 +64,7 @@
       $( "#dialog<%=r.id%>" ).dialog( "open" );
     });
     });
- 
+
     $( "#<%=r.id%>" ).click(function() {
       $( "#dialog<%=r.id%>" ).dialog( "open" );
     });
@@ -68,4 +72,3 @@
 
  </script>
 <% end %>
-<div id = "total"><h1> Total earned to date: $<%= @total %></h1></div>

@@ -15,15 +15,20 @@ def total_earned
     pledged = Pledge.where("reward_id = ?", amt).count
     total_reward = (pledged * amt.amount)
     total_earning += total_reward
-  end 
+  end
   total_earning
 end
 
 def pledge_status
-  rewarded = current_user.rewards.select(:campaign_id).distinct
-    rewarded.each do |r|
-    @campaign.id == r.campaign_id ? true : false
+  rewarded = current_user.rewards.select(:campaign_id, :id).distinct
+  rewarded.each do |r|
+    if @campaign.id == r.campaign_id
+      return true
+      break
+    else
+      return false
     end
+  end
 end
 
 end
