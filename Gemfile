@@ -45,3 +45,4 @@ gem 'jquery-ui-rails', '~> 5.0.0'
 # gem 'debugger', group: [:development, :test]
 
 gem 'cocoon'
+gem 'faker'
