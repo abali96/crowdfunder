@@ -1,0 +1,4 @@
+<h1>Crowdfunder</h1>
+<% @campaigns.each do |c| %>
+  <p><%= link_to c.name, campaign_path(c) %></p>
+<% end %>

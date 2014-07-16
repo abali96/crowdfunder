@@ -9,12 +9,21 @@ end
 
 def total_earned
   total_earning = 0
-  earned = Reward.where("campaign_id = :id")
+  pledged = 1
+  earned = Reward.where("campaign_id = ?", @campaign.id)
   earned.each do |amt|
-    pledged = Pledge.where("reward_id = amt.id").count
-    total_earning = pledged
+    pledged = Pledge.where("reward_id = ?", amt).count
+    total_reward = (pledged * amt.amount)
+    total_earning += total_reward
   end 
   total_earning
+end
+
+def pledge_status
+  rewarded = current_user.rewards.select(:campaign_id).distinct
+    rewarded.each do |r|
+    @campaign.id == r.campaign_id ? true : false
+    end
 end
 
 end
