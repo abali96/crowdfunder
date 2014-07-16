@@ -1,36 +1,42 @@
-<%= form_for @campaign do |f| %>
-
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-  <div>
-    <%= f.label :goal %>
-    <%= f.number_field :goal %>
-  </div>
-  <div>
-    <%= f.label :start_time %>
-    <%= f.datetime_select(:start_time) %>
-  </div>
-  <div>
-    <%= f.label :end_time %>
-    <%= f.datetime_select(:end_time) %>
-  </div>
-  <div>
-    <%= f.submit :submit %>
-  </div>
-
-  <h3>Rewards</h3>
-  <div>
-    <%= f.fields_for :rewards do |reward| %>
-      <%= render 'reward_fields', :f => reward %>
-    <% end %>
-    <div>
-      <%= link_to_add_association 'Add Reward', f, :rewards %>
+<div class="row">
+  <%= form_for @campaign do |f| %>
+    <div class="large-8 columns">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
     </div>
-  </div>
-<% end %>
+    <br>
+    <div class="large-8 columns">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+    <br>
+    <div class="large-8 columns">
+      <%= f.label :goal %>
+      <%= f.number_field :goal %>
+    </div>
+    <br>
+    <div class="large-8 columns" id="datetime">
+      <%= f.label :start_time %>
+      <%= f.datetime_select :start_time %>
+    </div>
+    <br>
+    <div class="large-8 columns">
+      <%= f.label :end_time %>
+      <%= f.datetime_select :end_time %>
+    </div>
+    <br>
+    <div class="large-8 columns">
+      <%= f.submit :submit, :class => "button" %>
+    </div>
+
+    <h3>Rewards</h3>
+    <div class="row">
+      <%= f.fields_for :rewards do |reward| %>
+        <%= render 'reward_fields', :f => reward %>
+      <% end %>
+      <div class="row">
+        <%= link_to_add_association 'Add Reward', f, :rewards %>
+      </div>
+    </div>
+  <% end %>
+</div>

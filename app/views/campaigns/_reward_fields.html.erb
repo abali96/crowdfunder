@@ -1,18 +1,17 @@
-<div>
-  <div>
+
+  <div class="medium-4 columns">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div>
+  <div class="medium-4 columns">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
-  <div>
+  <div class="medium-4 columns">
     <%= f.label :amount %>
     <%= f.number_field :amount %>
   </div>
-  <div>
-    <%= f.submit :submit %>
+  <div class="medium-4 columns">
+    <%= f.submit :submit, :class => 'button' %>
   </div>
   <%= link_to_remove_association "Remove Reward", f %>
-</div>
