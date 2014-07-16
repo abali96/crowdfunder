@@ -4,23 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Crowdfunder" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
     <%= javascript_include_tag "application" %>
+
+    <!-- <div class="row"> -->
+      <div class="twelve columns">
+        <nav class="top-bar">
+          <section class="top-bar-section">
+            <ul class="right">
+              <li class="has-dropdown">
+                <a href="#"><%= current_user.email %></a>
+                <ul class="dropdown">
+                  <% if current_user %>
+                  <li><%= link_to "Log Out", logout_path %></li>
+                </ul>
+              <% else %>
+                <%= link_to "Sign Up", signup_path %> or
+                <%= link_to "Log In", login_path %>.
+              <% end %>
+              
+              </li>
+              
+            </ul>
+          </section>
+        </nav>
+      </div>
+    </div>
   </head>
 
   <body>
     
-    <% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Log out", logout_path %>
-<% else %>
-  <%= link_to "Sign up", signup_path %> or
-  <%= link_to "log in", login_path %>.
-<% end %>
     <%= yield %>
     
   </body>

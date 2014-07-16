@@ -15,7 +15,7 @@
       <%= f.number_field :goal %>
     </div>
     <br>
-    <div class="large-8 columns" id="datetime">
+   <!--  <div class="large-8 columns" id="datetime">
       <%= f.label :start_time %>
       <%= f.datetime_select :start_time %>
     </div>
@@ -24,17 +24,36 @@
       <%= f.label :end_time %>
       <%= f.datetime_select :end_time %>
     </div>
+    <br> -->
+    <div class="large-5 columns">
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.label :begin_time %>
+      <%= f.time_field :begin_time %>
+    </div>
     <br>
+    <div class="large-5 columns">
+      <%= f.label :end_date %>
+      <%= f.date_field :end_date %>
+    </div>
+    <div class="large-3 columns">
+      <%= f.label :finish_time %>
+      <%= f.time_field :finish_time %>
+    </div>
     <div class="large-8 columns">
       <%= f.submit :submit, :class => "button" %>
     </div>
-
-    <h3>Rewards</h3>
-    <div class="row">
+    <br>
+    <div class="large-6 columns">
+      <h3>Rewards</h3>
+    </div>
+    <div class="large-8 columns">
       <%= f.fields_for :rewards do |reward| %>
         <%= render 'reward_fields', :f => reward %>
       <% end %>
-      <div class="row">
+      <div class="large-6 columns">
         <%= link_to_add_association 'Add Reward', f, :rewards %>
       </div>
     </div>
