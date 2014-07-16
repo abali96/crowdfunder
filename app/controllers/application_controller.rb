@@ -19,4 +19,15 @@ def total_earned
   total_earning
 end
 
+def pledge_status
+   rewarded = current_user.rewards.select(:campaign_id).distinct
+   rewarded.each do |r|
+    if @campaign.id == r.campaign_id
+     return true
+    else 
+      return false
+    end
+    end
+end
+
 end

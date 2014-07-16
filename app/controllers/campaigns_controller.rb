@@ -11,6 +11,7 @@ class CampaignsController < ApplicationController
     @pledges = Pledge.all
     @reward_campaign = @campaign.rewards
     @totals = total_earned
+    @pledge_status = pledge_status
   end
 
 
