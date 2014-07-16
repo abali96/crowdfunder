@@ -1,0 +1,54 @@
+<h2>Rewards</h2>
+  <% @total = 0 %>
+  <% @rewards.each do |r| %>
+    <p id="<%= r.id %>"><button><%= r.name %> </button></p>
+    <p><%= r.description %></p>
+    <p>$<%= r.amount %></p>
+    <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count)) %>
+    <% @total += ((@pledges.where(:reward_id => r.id).count) * r.amount)%>
+
+    <div id="dialog<%=r.id%>" title="Back this Campaign">
+      <%= form_tag pledge_path(r.id),:remote => true, id: r.id do %>
+          <div>
+            <p>Reward Description:</p>
+            <br>
+            <br>
+            <p><%=r.description%></p>
+            <p>$<%=r.amount%></p>
+            <br><br><br>
+            <p><%=submit_tag "Complete Pledge", class: "pledge_create"%></p>
+          </div>
+      <% end %>
+    </div>
+
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  <script type='text/javascript'>
+
+    $(function() {
+      $( "#dialog<%=r.id%>" ).dialog({
+        autoOpen: false,
+        show: {
+          effect: "blind",
+          duration: 100
+        },
+        hide: {
+          effect: "explode",
+          duration: 1000
+        }
+      });
+
+      $("#dialog<%=r.id%>").submit(function () {
+        $("#dialog<%=r.id%>").dialog( "close" );
+        $( "#<%=r.id%>" ).click(function() {
+        $( "#dialog<%=r.id%>" ).dialog( "open" );
+        });
+      });
+
+      $( "#<%=r.id%>" ).click(function() {
+        $( "#dialog<%=r.id%>" ).dialog( "open" );
+      });
+    });
+
+  </script>
+<% end %>
