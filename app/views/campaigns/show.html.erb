@@ -11,7 +11,13 @@
   <% end %>
 <p>Campaign was created by <%= @campaign.user.email %><p>
 <p>Campaign was last updated on <%= @campaign.updated_at %><p>
- <h1> Total earned to date: $<%= @totals %> </h1>
+ <div id = "total_earned"><h1> Total earned to date: $<%= @totals %></h1> </div>
+ <div> <% if @pledge_status == true %> 
+        <h1> YOU HAVE DONATED </h1>
+      <% else %>
+        <h1> DO YOU WANT TO DONATE? </h1>
+      <% end %>
+</div>
 
 
 <h2>Rewards</h2>
