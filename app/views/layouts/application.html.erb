@@ -17,18 +17,17 @@
           <section class="top-bar-section">
             <ul class="right">
               <li class="has-dropdown">
-                <a href="#"><%= current_user.email %></a>
-                <ul class="dropdown">
-                  <% if current_user %>
-                  <li><%= link_to "Log Out", logout_path %></li>
+                <% if current_user%>
+                  <a href="#"><%= current_user.email %></a>
+                  <%= link_to "Logout", logout_path %>
+                  <ul class="dropdown">
+                  <li><a href="#">Log out</a></li>
                 </ul>
               <% else %>
-                <%= link_to "Sign Up", signup_path %> or
-                <%= link_to "Log In", login_path %>.
+                <%= link_to "Sign Up", signup_path %>
+                <%= link_to "Log In", login_path %>
               <% end %>
-              
               </li>
-              
             </ul>
           </section>
         </nav>
