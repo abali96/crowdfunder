@@ -30,6 +30,8 @@ gem 'sorcery'
 
 gem 'foundation-rails'
 
+gem 'jquery-ui-rails', '~> 5.0.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
