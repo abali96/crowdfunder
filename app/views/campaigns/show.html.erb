@@ -20,13 +20,16 @@
   <p><%= r.description %></p>
   <p><%= r.amount %></p>
 
- <div id="dialog<%=r.id%>" title="<%=r.description%>">
+ <div id="dialog<%=r.id%>" title="Back this Campaign">
   <p>
   <%= form_tag pledge_path(r.id), id: r.id do %>
-  <div> <%=submit_tag r.description, class: "pledge_create"%></div>
+  <div>  Reward Description: <br>
+  <br><%=r.description%>
+  <br><br><br><%=submit_tag "Complete Pledge", class: "pledge_create"%></div>
   <% end %>
    </p>
 </div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <script type='text/javascript'>
 
   $(function() {
@@ -34,7 +37,7 @@
       autoOpen: false,
       show: {
         effect: "blind",
-        duration: 1000
+        duration: 100
       },
       hide: {
         effect: "explode",
