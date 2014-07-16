@@ -22,7 +22,7 @@
 
  <div id="dialog<%=r.id%>" title="Back this Campaign">
   <p>
-  <%= form_tag pledge_path(r.id), id: r.id do %>
+  <%= form_tag pledge_path(r.id),:remote => true, id: r.id do %>
   <div>  Reward Description: <br>
   <br><%=r.description%>
   <br><br><br><%=submit_tag "Complete Pledge", class: "pledge_create"%></div>
@@ -43,6 +43,13 @@
         effect: "explode",
         duration: 1000
       }
+    });
+
+    $("#dialog<%=r.id%>").submit(function () {
+      $("#dialog<%=r.id%>").dialog( "close" );
+      $( "#<%=r.id%>" ).click(function() {
+      $( "#dialog<%=r.id%>" ).dialog( "open" );
+    });
     });
  
     $( "#<%=r.id%>" ).click(function() {
