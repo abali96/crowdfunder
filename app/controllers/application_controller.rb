@@ -9,10 +9,12 @@ end
 
 def total_earned
   total_earning = 0
-  earned = Reward.where("campaign_id = :id")
+  pledged = 1
+  earned = Reward.where("campaign_id = 2")
   earned.each do |amt|
-    pledged = Pledge.where("reward_id = amt.id").count
-    total_earning = pledged
+    pledged = Pledge.where("reward_id = ?", amt).count
+    total_reward = (pledged * amt.amount)
+    total_earning += total_reward
   end 
   total_earning
 end
