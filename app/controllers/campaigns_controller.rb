@@ -11,8 +11,19 @@ class CampaignsController < ApplicationController
     @pledges = Pledge.all
     @reward_campaign = @campaign.rewards
     @totals = total_earned
-    @pledge_status = pledge_status
+    # @pledge_status = pledge_status
+    rewarded = current_user.rewards.select(:campaign_id, :id).distinct
+    rewarded.each do |r|
+      if @campaign.id == r.campaign_id
+        @pledge_status = true
+        break
+      else
+        @pledge_status = false
+      end
+    end
   end
+
+
 
 
   def new
@@ -42,7 +53,6 @@ class CampaignsController < ApplicationController
       render :edit
     end
   end
-
 
   private
   def campaign_params
