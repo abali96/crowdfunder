@@ -1,8 +1,8 @@
 <h1><%= @campaign.name %></h1>
   <p>Goal: <%= @campaign.goal %></p>
   <p><%= @campaign.description %><p>
-  <p>Campaign started on <%= @campaign.start_time %><p>
-  <p>Campaign ends at <%= @campaign.end_time %><p>
+  <p>Campaign started on <%= @campaign.start_date %> <p>
+  <p>Campaign ends at <%= @campaign.end_date %><p>
   <p>Created by: <%= @campaign.user.email %><p>
     <% if @campaign.end_date < Time.now %>
       <p>Campaign over!</p>
@@ -11,6 +11,7 @@
     <% end %>
   <p>Campaign was created by <%= @campaign.user.email %><p>
   <p>Campaign was last updated on <%= @campaign.updated_at %><p>
+
   <div id = "total_earned">
     <h1> Total earned to date: $<%= @totals %>
     </h1>
@@ -23,52 +24,57 @@
     <% end %>
   </div>
 
-
 <h2>Rewards</h2>
-  <%@total = 0%>
+  <% @total = 0 %>
   <% @rewards.each do |r| %>
-  <p id="<%= r.id %>"><button><%= r.name %> </button></p>
-  <p><%= r.description %></p>
-  <p>$<%= r.amount %></p>
-  <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count))%>
-  <% @total += ((@pledges.where(:reward_id => r.id).count) * r.amount)%>
+    <p id="<%= r.id %>"><button><%= r.name %> </button></p>
+    <p><%= r.description %></p>
+    <p>$<%= r.amount %></p>
+    <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count)) %>
+    <% @total += ((@pledges.where(:reward_id => r.id).count) * r.amount)%>
 
- <div id="dialog<%=r.id%>" title="Back this Campaign">
-  <p>
-  <%= form_tag pledge_path(r.id),:remote => true, id: r.id do %>
-  <div>  Reward Description: <br>
-  <br><%=r.description%>
-  <br><br><br><%=submit_tag "Complete Pledge", class: "pledge_create"%></div>
-  <% end %>
-   </p>
-</div>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-<script type='text/javascript'>
+    <div id="dialog<%=r.id%>" title="Back this Campaign">
+      <%= form_tag pledge_path(r.id),:remote => true, id: r.id do %>
+          <div>
+            <p>Reward Description:</p>
+            <br>
+            <br>
+            <p><%=r.description%></p>
+            <p>$<%=r.amount%></p>
+            <br><br><br>
+            <p><%=submit_tag "Complete Pledge", class: "pledge_create"%></p>
+          </div>
+      <% end %>
+    </div>
 
-  $(function() {
-    $( "#dialog<%=r.id%>" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 100
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
 
-    $("#dialog<%=r.id%>").submit(function () {
-      $("#dialog<%=r.id%>").dialog( "close" );
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  <script type='text/javascript'>
+
+    $(function() {
+      $( "#dialog<%=r.id%>" ).dialog({
+        autoOpen: false,
+        show: {
+          effect: "blind",
+          duration: 100
+        },
+        hide: {
+          effect: "explode",
+          duration: 1000
+        }
+      });
+
+      $("#dialog<%=r.id%>").submit(function () {
+        $("#dialog<%=r.id%>").dialog( "close" );
+        $( "#<%=r.id%>" ).click(function() {
+        $( "#dialog<%=r.id%>" ).dialog( "open" );
+        });
+      });
+
       $( "#<%=r.id%>" ).click(function() {
-      $( "#dialog<%=r.id%>" ).dialog( "open" );
-    });
+        $( "#dialog<%=r.id%>" ).dialog( "open" );
+      });
     });
 
-    $( "#<%=r.id%>" ).click(function() {
-      $( "#dialog<%=r.id%>" ).dialog( "open" );
-    });
-  });
-
- </script>
+  </script>
 <% end %>
