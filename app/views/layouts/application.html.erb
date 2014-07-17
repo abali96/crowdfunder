@@ -19,6 +19,7 @@
               <li class="has-dropdown">
                 <% if current_user%>
                   <a href="#"><%= current_user.email %></a>
+                  <%= link_to "Info", sessions_path %>
                   <%= link_to "Logout", logout_path %>
                   <ul class="dropdown">
                   <li><a href="#">Log out</a></li>
