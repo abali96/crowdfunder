@@ -1,25 +1,35 @@
 <section >
-  <div class="campaign_title"> <%= @campaign.name %></div>
-  <div class="campaign_user"> Created by: <%= @campaign.user.email %></div>
+  <div class="campaign_title"> <%= @campaign.name %>
+  </div>
+  <div class="campaign_user"> Created by: <%= @campaign.user.email %>
+  </div>
 
-    <div class="row campaign">
-    <div class="campaign_pic large-9 columns">Insert Pictures</div>
+  <div class="row campaign">
+    <div class="campaign_pic large-9 columns">
+      Insert Picture
+    </div>
     <div class="large-3 columns campaign_info"> 
-      <span class="campaign_header" id = "total_earned">$<%= @campaign.total_earned%> </span>
-        <p>pledged of $<%= @campaign.goal %> goal.</p>
-        <% if @campaign.end_date < Time.now %>
-          <p>Campaign over!</p>
-        <% else %>
-          <span class="campaign_header"><%= (@campaign.end_date - Date.today).round %></span>
-          <p> days to go</p>
-        <% end %>
-      <p style="font-size: .8rem;">Campaign will only be funded if goal is reached by: <%= @campaign.end_date %></p>
-    <div id="rewards">
-      <%= render 'rewards' %>
-    </div>
-    </div>  
-    </div>
-    
-</section>
+      <span class="campaign_header" id = "total_earned">
+        $<%= @campaign.total_earned%>
+      </span>
+      <p>pledged of $<%= @campaign.goal %> goal.</p>
+        
+      <% if @campaign.end_date < Time.now %>
+        <p>Campaign over!</p>
+      <% else %>
+        <span class="campaign_header">
+          <%= (@campaign.end_date - Date.today).round %>
+        </span>
+        <p> days to go</p>
+      <% end %>
 
-    
+      <p style="font-size: .8rem;">Category: <%= @campaign.category %></p>
+      <p style="font-size: .8rem;">Campaign was created by <%= @campaign.user.email %></p>
+      <p style="font-size: .8rem;">Campaign will only be funded if goal is reached by: <%= @campaign.end_date %></p>
+
+      <div id="rewards">
+        <%= render 'rewards' %>
+      </div>
+    </div>  
+  </div>
+</section>

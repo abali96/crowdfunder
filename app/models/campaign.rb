@@ -3,7 +3,7 @@ class Campaign < ActiveRecord::Base
   accepts_nested_attributes_for :rewards, :reject_if => :all_blank, :allow_destroy => true
   has_many :users, through: :rewards
   belongs_to :user
-  validates :name, :description, :goal, :start_date, :end_date, :presence => true
+  validates :name, :description, :goal, :start_date, :end_date, :category, :presence => true
   validate :appropriate_dates
 
   def total_earned
