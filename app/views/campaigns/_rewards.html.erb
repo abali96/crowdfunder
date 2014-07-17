@@ -15,7 +15,6 @@
     <p><%= r.description %></p>
     <p>$<%= r.amount %></p>
     <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count)) %>
-    <!-- <% @total += ((@pledges.where(:reward_id => r.id).count) * r.amount)%> -->
 
     <div id="dialog<%=r.id%>" title="Back this Campaign">
       <%= form_tag pledge_path(r.id),:remote => true, id: r.id do %>
