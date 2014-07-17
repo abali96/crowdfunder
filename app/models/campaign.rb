@@ -3,22 +3,19 @@ class Campaign < ActiveRecord::Base
   accepts_nested_attributes_for :rewards, :reject_if => :all_blank, :allow_destroy => true
   has_many :users, through: :rewards
   belongs_to :user
-  validates :name, :description, :goal, :start_date, :end_date, :presence => true
+  validates :name, :description, :goal, :start_date, :end_date, :category, :presence => true
   validate :appropriate_dates
   mount_uploader :avatar, AvatarUploader
 
 
   def total_earned
-  total_earning = 0
-  pledged = 1
-  earned = Reward.where(@campaign)
-  earned.each do |amt|
-    pledged = Pledge.where("reward_id = ?", amt).count
-    total_reward = (pledged * amt.amount)
-    total_earning += total_reward
+    total = 0
+    self.rewards.each do |r|
+      total += (r.amount * r.pledges.count)
+    end
+    total
   end
-  total_earning
-  end
+
 
   def appropriate_dates
   if start_date && end_date

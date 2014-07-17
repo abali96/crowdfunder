@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140717215457) do
+=======
+ActiveRecord::Schema.define(version: 20140717201519) do
+>>>>>>> 5517ce51d6bc78d1f04ebdcc0715fcc395b2e60c
 
   create_table "campaigns", force: true do |t|
     t.string   "name"
@@ -26,7 +30,11 @@ ActiveRecord::Schema.define(version: 20140717215457) do
     t.time     "begin_time"
     t.date     "end_date"
     t.time     "finish_time"
+<<<<<<< HEAD
     t.string   "avatar"
+=======
+    t.string   "category"
+>>>>>>> 5517ce51d6bc78d1f04ebdcc0715fcc395b2e60c
   end
 
   create_table "pledges", force: true do |t|

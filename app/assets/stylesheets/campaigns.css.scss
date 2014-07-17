@@ -48,3 +48,48 @@
 
 .campaign_pic {
  }
+
+.rewards {
+  background: #F7FAFA;
+  position: relative;
+  height: 300px;
+
+}
+
+.hidden {
+  display: none;
+}
+
+span.text-content {
+  background: #b1de89;
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+  position: absolute;
+
+}
+ 
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 3rem;
+}
+
+// span.text-content.active span.text-content{
+//   opacity: 1;
+// }
+
+.rewards.active span.text-content{
+  opacity: 1;
+}
+
