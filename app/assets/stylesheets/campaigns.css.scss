@@ -61,21 +61,21 @@
 }
 
 span.text-content {
-  background: rgba(0,0,0,0.5);
+  background: #b1de89;
   color: white;
   cursor: pointer;
   display: table;
-  height: 300px;
+  height: 100%;
   left: 0;
   top: 0;
-  width: 300px;
+  width: 100%;
   opacity: 0;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
   -o-transition: opacity 500ms;
   transition: opacity 500ms;
   position: absolute;
-  
+
 }
  
 span.text-content span {
