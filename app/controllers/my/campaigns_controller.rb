@@ -11,6 +11,7 @@ class My::CampaignsController < ApplicationController
   end
 
   def edit
+    @campaign = current_user.campaigns.find(params[:id])
   end
 
   def update

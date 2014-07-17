@@ -6,8 +6,7 @@
  <% end %>
 </div>
 
-<%= form_for [:my, @campaign] do |f| %>
-  <%= render 'shared/form_errors', :f => f %>
+<%= form_for @campaign do |f| %>
   <%= render f %>
   <div class="form-actions">
     <%= f.submit 'Update Campaign', class: 'btn' %>
