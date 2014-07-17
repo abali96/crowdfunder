@@ -11,9 +11,16 @@ class CampaignsController < ApplicationController
     @pledges = Pledge.all
     @reward_campaign = @campaign.rewards
     @totals = total_earned
-    @pledge_status = pledge_status
+    rewarded = current_user.rewards.select(:campaign_id, :id).distinct
+    rewarded.each do |r|
+      if @campaign.id == r.campaign_id
+        @pledge_status = true
+        break
+      else
+        @pledge_status = false
+      end
+    end
   end
-
 
   def new
     @campaign = Campaign.new
@@ -43,10 +50,9 @@ class CampaignsController < ApplicationController
     end
   end
 
-
   private
   def campaign_params
-    params.require(:campaign).permit(:name, :description, :goal, :start_time, :end_time, rewards_attributes: [:name, :description, :amount, :_destroy])
+    params.require(:campaign).permit(:name, :description, :goal, :begin_time, :finish_time, :start_date, :end_date, rewards_attributes: [:name, :description, :amount, :_destroy])
   end
 
 end

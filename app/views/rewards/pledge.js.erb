@@ -1,1 +1,4 @@
-$('#total_earned').load("/campaigns/"<%=@campaign%>" #total_earned");
+$('#total_earned').load(window.location.pathname + " #total_earned");
+
+$('#rewards').html('<%= j(render :partial => "/campaigns/rewards") %>')
+
