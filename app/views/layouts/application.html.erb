@@ -11,6 +11,10 @@
     <%= csrf_meta_tags %>
     <%= javascript_include_tag "application" %>
 
+    
+  </head>
+
+  <body>
     <!-- <div class="row"> -->
       <div class="twelve columns">
         <nav class="top-bar" data-topbar>
@@ -37,15 +41,12 @@
           
           <!-- Left Nav Section -->
           <ul class="left">
-            <li><%= link_to "Discover", campaigns_path %></li>
+            <li><%= link_to "Campaigns", campaigns_path %></li>
           </ul>
           </section>
         </nav>
       </div>
     </div>
-  </head>
-
-  <body>
     
     <%= yield %>
     
