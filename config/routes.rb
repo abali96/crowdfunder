@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  
+
+  get 'troll/show'
+
   resources :sessions
   resources :campaigns do
     resources :rewards
