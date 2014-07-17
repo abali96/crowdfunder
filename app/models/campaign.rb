@@ -5,6 +5,8 @@ class Campaign < ActiveRecord::Base
   belongs_to :user
   validates :name, :description, :goal, :start_date, :end_date, :presence => true
   validate :appropriate_dates
+  mount_uploader :avatar, AvatarUploader
+
 
   def total_earned
   total_earning = 0

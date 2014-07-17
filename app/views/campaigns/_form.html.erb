@@ -5,7 +5,11 @@
     <% end %>
   <% end %>
   <br>
-  <%= form_for @campaign do |f| %>
+  <%= form_for @campaign, html: {multipart: true} do |f| %>
+    <div class="large-10 columns">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
     <div class="large-10 columns">
       <%= f.label :name %>
       <%= f.text_field :name %>

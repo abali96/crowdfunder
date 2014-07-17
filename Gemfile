@@ -34,6 +34,11 @@ gem 'jquery-ui-rails', '~> 5.0.0'
 
 gem 'jquery-turbolinks'
 
+gem 'carrierwave'
+
+# gem 'rmagick', :require => 'RMagick'
+
+gem 'acts-as-taggable-on'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
