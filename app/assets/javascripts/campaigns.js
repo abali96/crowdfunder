@@ -4,4 +4,11 @@ $( document ).ready(function() {
     var rewardCounterSpan = $(insertedItem).find('.reward-counter');
     rewardCounterSpan.html(i + 1);
   });
+
+  $( ".rewards" )
+    .hover(function() {
+      $( this )
+        .toggleClass( "active" )
+    });
+
 });

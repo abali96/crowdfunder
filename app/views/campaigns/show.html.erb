@@ -3,8 +3,8 @@
   <div class="campaign_user"> Created by: <%= @campaign.user.email %></div>
 
     <div class="row campaign">
-    <div class="campaign_pic large-9 columns">Insert Pictures</div>
-    <div class="large-3 columns campaign_info"> 
+    <div class="campaign_pic large-8 columns">Insert Pictures</div>
+    <div class="large-4 columns campaign_info"> 
       <span class="campaign_header" id = "total_earned">$<%= @campaign.total_earned%> </span>
         <p>pledged of $<%= @campaign.goal %> goal.</p>
         <% if @campaign.end_date < Time.now %>
