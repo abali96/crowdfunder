@@ -10,7 +10,6 @@ class CampaignsController < ApplicationController
     @rewards = @campaign.rewards.all
     @pledges = Pledge.all
     @reward_campaign = @campaign.rewards
-    @totals = total_earned
     rewarded = current_user.rewards.select(:campaign_id, :id).distinct
     rewarded.each do |r|
       if @campaign.id == r.campaign_id

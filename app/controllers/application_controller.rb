@@ -7,16 +7,5 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, :alert => "First login to access this page."
   end
 
-  def total_earned
-    total_earning = 0
-    pledged = 1
-    earned = Reward.where("campaign_id = ?", @campaign.id)
-    earned.each do |amt|
-      pledged = Pledge.where("reward_id = ?", amt).count
-      total_reward = (pledged * amt.amount)
-      total_earning += total_reward
-    end
-    total_earning
-  end
 
 end

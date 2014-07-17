@@ -13,22 +13,32 @@
 
     <!-- <div class="row"> -->
       <div class="twelve columns">
-        <nav class="top-bar">
+        <nav class="top-bar" data-topbar>
+          <ul class="title-area">
+            <li class="name">
+              <h1><a href="/">crowdFunder</a></h1>
+            </li>
+          </ul>
+          <!-- Right Nav Seciont -->
           <section class="top-bar-section">
             <ul class="right">
-              <li class="has-dropdown">
-                <% if current_user%>
+              <% if current_user%>
+                <li class="has-dropdown">
                   <a href="#"><%= current_user.email %></a>
-                  <%= link_to "Logout", logout_path %>
                   <ul class="dropdown">
-                  <li><a href="#">Log out</a></li>
-                </ul>
+                    <li> <%= link_to "Logout", logout_path %> </li>
+                  </ul>
+                </li>
               <% else %>
-                <%= link_to "Sign Up", signup_path %>
-                <%= link_to "Log In", login_path %>
+                <li><%= link_to "Sign Up", signup_path %></li>
+                <li><%= link_to "Log In", login_path %></li>
               <% end %>
-              </li>
             </ul>
+          
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li><%= link_to "Discover", campaigns_path %></li>
+          </ul>
           </section>
         </nav>
       </div>

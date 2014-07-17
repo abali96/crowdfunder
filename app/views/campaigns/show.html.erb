@@ -12,8 +12,8 @@
   <p>Campaign was created by <%= @campaign.user.email %><p>
   <p>Campaign was last updated on <%= @campaign.updated_at %><p>
 
-  <div id = "total_earned">
-    <h1> Total earned to date: $<%= @totals %>
+  <div>
+    <h1> Total earned to date: $<span id = "total_earned"><%= @campaign.total_earned%> </span>
     </h1>
   </div>
 
