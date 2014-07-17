@@ -1,4 +1,10 @@
 <div class="row">
+  <% if @campaign.errors.any? %>
+    <% @campaign.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% end %>
+  <br>
   <%= form_for @campaign do |f| %>
     <div class="large-8 columns">
       <%= f.label :name %>
@@ -38,11 +44,6 @@
       <%= f.label :end_date %>
       <%= f.date_field :end_date %>
     </div>
-    <% if @campaign.errors.any? %>
-      <% @campaign.errors.full_messages.each do |msg| %>
-        <%= msg %>
-      <% end %>
-    <% end %>
 <!--     <div class="large-3 columns">
       <%= f.label :finish_time %>
       <%= f.time_field :finish_time %>
