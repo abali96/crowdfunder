@@ -1,17 +1,14 @@
-
-  <div class="medium-4 columns">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="medium-4 columns">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <div class="medium-4 columns">
-    <%= f.label :amount %>
-    <%= f.number_field :amount %>
-  </div>
-  <div class="medium-4 columns">
-    <%= f.submit :submit, :class => 'button' %>
+<div class="nested-fields">
+  <p>Reward <span class="reward-counter">0</span></p>
+  <div style="display: block">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+      <%= f.label :amount %>
+      <%= f.number_field :amount %>
   </div>
   <%= link_to_remove_association "Remove Reward", f %>
+</div>
+<br>
+<br>
