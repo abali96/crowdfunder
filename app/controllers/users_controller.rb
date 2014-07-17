@@ -13,6 +13,18 @@ def create
   end
 end
 
+def edit
+  @user = User.find(params[:id])
+end
+
+def update
+  if @user.update_attributes(params[:user])
+    redirect_to [:my, :campaigns], notice: "User Info Updated!"
+  else
+    render :edit
+  end
+end
+
 private
 
   def user_params
