@@ -1,3 +1,8 @@
+<% total = 0 %>
+<% @campaign.rewards.each do |r| %>
+  <% total += (r.amount * r.pledges.count) %>
+<% end %>
+
 <section >
   <div class="campaign_title"> <%= @campaign.name %>
   </div>
@@ -10,7 +15,7 @@
     </div>
     <div class="large-3 columns campaign_info"> 
       <span class="campaign_header" id = "total_earned">
-        $<%= @campaign.total_earned%>
+        $<%= total %>
       </span>
       <p>pledged of $<%= @campaign.goal %> goal.</p>
         
@@ -33,3 +38,5 @@
     </div>  
   </div>
 </section>
+
+
