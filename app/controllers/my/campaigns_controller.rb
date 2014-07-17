@@ -3,7 +3,9 @@ class My::CampaignsController < ApplicationController
   before_filter :require_campaign
 
   def index
+    @users = current_user
     @campaigns = current_user.campaigns.order('campaigns.created_at DESC').all
+    @pledges = current_user.pledges.order('pledges.created_at DESC').all
   end
 
   def new

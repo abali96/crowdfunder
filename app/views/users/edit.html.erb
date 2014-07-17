@@ -1,0 +1,27 @@
+<h1>Edit User Info </h1>
+
+<div class="row">
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% end %>
+  <br>
+  <%= form_for @user do |f| %>
+    <div class="large-8 columns">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <br>
+    <div class="large-8 columns">
+      <%= f.label :password %>
+      <%= f.text_field :password %>
+    </div>
+    <br>
+    
+    <div class="large-8 columns">
+      <%= f.submit :update, :class => "button" %>
+    </div>
+    <br>
+  <% end %>
+</div>

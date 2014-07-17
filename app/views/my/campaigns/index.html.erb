@@ -1,7 +1,17 @@
+<h1>My Account Info</h1>
+<div>
+  <%= render @users %>
+<%= link_to 'Edit', edit_user_url(current_user) %>
+</div>
+
 <h1>My Campaigns</h1>
 
 <div class="well">
- <%= link_to '+ New Campaign', [:new, :my, :campaign], class: 'btn btn-small btn-primary pull-right' %>
+ <%= link_to '+ New Campaign', [:new, :campaign]  , class: 'btn btn-small btn-primary pull-right' %>
 </div>
 
 <%= render @campaigns %>
+
+<h1>Campaigns Backed</h1>
+
+<%= render @pledges %>
