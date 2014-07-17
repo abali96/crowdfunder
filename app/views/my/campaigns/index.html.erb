@@ -1,6 +1,6 @@
 <h1>My Account Info</h1>
 <div>
-  <%= render @users %>
+  <%= render @user %>
 <%= link_to 'Edit', edit_user_url(current_user) %>
 </div>
 
@@ -15,3 +15,10 @@
 <h1>Campaigns Backed</h1>
 
 <%= render @pledges %>
+<p>-----------------------------------------------------</p>
+
+<% sum = 0 %>
+<% @user.pledges.each do |p| %>
+  <% sum += p.reward.amount %>
+<% end %>
+<p><strong>Total Amount Donated: </strong><%= sum %></p>
