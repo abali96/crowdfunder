@@ -1,27 +1,37 @@
 <section >
-  <div class="campaign_title"> <%= @campaign.name %></div>
-  <div class="campaign_user"> Created by: <%= @campaign.user.email %></div>
+  <div class="campaign_title"> <%= @campaign.name %>
+  </div>
+  <div class="campaign_user"> Created by: <%= @campaign.user.email %>
+  </div>
 
     <div class="row campaign">
-    <div class="campaign_pic large-9 columns">Insert Pictures</div>
-    <div class="large-3 columns"> 
-      
-     <!--  <p>Campaign started on <%= @campaign.start_date %> </p>
-      <p>Campaign ends at <%= @campaign.end_date %></p> -->
-      <div class="campaign_info">$<span id = "total_earned"><%= @campaign.total_earned%> </span>
-        <p>pledged of $<%= @campaign.goal %> goal.</p>
-        <% if @campaign.end_date < Time.now %>
-          <p>Campaign over!</p>
-        <% else %>
-          <p><%= (@campaign.end_date - Date.today).round %> days to go</p>
-        <% end %>
-      <p>Campaign was created by <%= @campaign.user.email %></p>
-      <p>Campaign was last updated on <%= @campaign.updated_at %></p>   
-      </div>  
-        </div>
+      <div class="campaign_pic large-9 columns">
+        Insert Picture
+      </div>
+      <div class="large-3 columns"> 
+        
+       <!--  <p>Campaign started on <%= @campaign.start_date %> </p>
+        <p>Campaign ends at <%= @campaign.end_date %></p> -->
+        <div class="campaign_info">
+          $<span id = "total_earned">
+            <%= @campaign.total_earned%>
+          </span>
+          <p>pledged of $<%= @campaign.goal %> goal.</p>
+
+          <% if @campaign.end_date < Time.now %>
+            <p>Campaign over!</p>
+          <% else %>
+            <p><%= (@campaign.end_date - Date.today).round %> days to go</p>
+          <% end %>
+
+          <p>Category: <%= @campaign.category %></p>
+          <p>Campaign was created by <%= @campaign.user.email %></p>
+          <p>Campaign was last updated on <%= @campaign.updated_at %></p>   
+        </div>  
+      </div>
     </div>
 </section>
 
-    <div id="rewards">
-      <%= render 'rewards' %>
-    </div>
+  <div id="rewards">
+    <%= render 'rewards' %>
+  </div>
