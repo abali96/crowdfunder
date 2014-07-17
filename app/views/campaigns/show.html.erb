@@ -1,23 +1,34 @@
-<h1><%= @campaign.name %></h1>
-  <p>Goal: <%= @campaign.goal %></p>
-  <p><%= @campaign.description %><p>
-  <p>Campaign started on <%= @campaign.start_date %> <p>
-  <p>Campaign ends at <%= @campaign.end_date %><p>
-  <p>Created by: <%= @campaign.user.email %><p>
-    <% if @campaign.end_date < Time.now %>
-      <p>Campaign over!</p>
-    <% else %>
-      <p><%= (@campaign.end_date - Date.today).round %> days to go</p>
-    <% end %>
-  <p>Campaign was created by <%= @campaign.user.email %><p>
-  <p>Campaign was last updated on <%= @campaign.updated_at %><p>
+<section >
+  <div class="campaign_title"> <%= @campaign.name %></div>
+  <div class="campaign_user"> Created by: <%= @campaign.user.email %></div>
 
-  <div>
-    <h1> Total earned to date: $<span id = "total_earned"><%= @campaign.total_earned%> </span>
-    </h1>
-  </div>
+    <div class="row campaign_info">
+      <div class="campaign_pic large-9 columns">
+      </div>
+      <div class="large-3 columns">
+      
+        <p>Goal: <%= @campaign.goal %></p>
+        <p><%= @campaign.description %></p>
+        <p>Campaign started on <%= @campaign.start_date %> </p>
+        <p>Campaign ends at <%= @campaign.end_date %></p>
+        
+          <% if @campaign.end_date < Time.now %>
+            <p>Campaign over!</p>
+          <% else %>
+            <p><%= (@campaign.end_date - Date.today).round %> days to go</p>
+          <% end %>
+        <p>Campaign was created by <%= @campaign.user.email %></p>
+        <p>Campaign was last updated on <%= @campaign.updated_at %></p>
 
 
-<div id="rewards">
-  <%= render 'rewards' %>
-</div>
+        <div>
+          <h1> Total earned to date: $<span id = "total_earned"><%= @campaign.total_earned%> </span>
+          </h1>
+        </div>
+      </div>
+    </div>
+</section>
+
+    <div id="rewards">
+      <%= render 'rewards' %>
+    </div>

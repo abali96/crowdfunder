@@ -15,15 +15,15 @@
   </head>
 
   <body>
-    <!-- <div class="row"> -->
-      <div class="twelve columns">
+    <div class="fixed">
+     
         <nav class="top-bar" data-topbar>
           <ul class="title-area">
             <li class="name">
               <h1><a href="/">crowdFunder</a></h1>
             </li>
           </ul>
-          <!-- Right Nav Seciont -->
+          <!-- Right Nav Section -->
           <section class="top-bar-section">
             <ul class="right">
               <% if current_user%>
@@ -45,7 +45,7 @@
           </ul>
           </section>
         </nav>
-      </div>
+    
     </div>
     
     <%= yield %>
