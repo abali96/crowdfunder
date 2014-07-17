@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :require_login, :except => [:show, :index]
-
+  before_action :authenticate_creator, :only => [:edit, :update, :destroy]
   def index
     @campaigns = Campaign.all
   end
@@ -53,6 +53,12 @@ class CampaignsController < ApplicationController
   private
   def campaign_params
     params.require(:campaign).permit(:name, :description, :goal, :begin_time, :finish_time, :start_date, :end_date, rewards_attributes: [:name, :description, :amount, :_destroy])
+  end
+
+  def authenticate_creator
+    if current_user.id != Campaign.find(params[:id]).user_id
+    redirect_to troll_show_path
+    end
   end
 
 end
