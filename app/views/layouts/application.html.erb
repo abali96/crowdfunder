@@ -29,6 +29,9 @@
               <% if current_user%>
                 <li class="has-dropdown">
                   <a href="#"><%= current_user.email %></a>
+                  <!-- <%= link_to "Info", [:my, :campaigns] %> -->
+                  <%= link_to "Pledges", [:my, :pledges] %>
+                  <%= link_to "Logout", logout_path %>
                   <ul class="dropdown">
                     <li> <%= link_to "Logout", logout_path %> </li>
                   </ul>

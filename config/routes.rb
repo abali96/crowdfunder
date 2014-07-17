@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     resources :pledges
   end
 
+  namespace :my do
+    resources :campaigns
+    resources :rewards, only: [:show, :index]
+    resources :pledges, only: [:index, :show, :update, :destroy]
+  end
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
