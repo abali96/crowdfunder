@@ -1,0 +1,14 @@
+<h1>Edit <%= @campaign.name %></h1>
+
+<div class="well">
+ <%= link_to [:my, :campaigns], :class => 'btn btn-small' do %>
+  &laquo; My Campaigns
+ <% end %>
+</div>
+
+<%= form_for [:my, @campaign] do |f| %>
+  <%= render f %>
+  <div class="form-actions">
+    <%= f.submit 'Update Campaign', class: 'btn' %>
+  </div>
+<% end %>
