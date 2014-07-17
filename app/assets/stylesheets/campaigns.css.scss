@@ -21,28 +21,25 @@
 }
 
 #total_earned {
-  font-size: 2rem;
-  margin-top: 100px;
+  display: block;
+  margin-top: 30px;
 }
 
-.campaign {
-  
+.campaign { 
   text-align: left;
   border: 2px solid rgb(217, 217, 222);
   border-radius: 25px;
   width: 300px;
   background: white;
+}
+
+.campaign_info {
   
 }
 
-.capaign_info {
-  margin: 7px;
+.campaign_header {
+  font-size: 3rem;
 }
 
 .campaign_pic {
- 
-}
-
-#rewards {
-
-}
+ }
