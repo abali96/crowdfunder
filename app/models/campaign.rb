@@ -6,6 +6,15 @@ class Campaign < ActiveRecord::Base
   validates :name, :description, :goal, :start_date, :end_date, :category, :presence => true
   validate :appropriate_dates
 
+  def total_earned
+    total = 0
+    self.rewards.each do |r|
+      total += (r.amount * r.pledges.count)
+    end
+    total
+  end
+
+
   def appropriate_dates
   if start_date && end_date
     if start_date > end_date
