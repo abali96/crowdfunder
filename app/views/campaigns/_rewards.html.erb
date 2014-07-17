@@ -1,7 +1,7 @@
 
-<div>
+<div class="highlight">
   <% if @pledge_status == true %>
-    <p> You have donated. </p>
+    <p> You have donated. Thank You! </p>
   <% else %>
     <p> Do you want to donate? </p>
   <% end %>
@@ -11,20 +11,19 @@
 
   <% @total = 0 %>
   <% @rewards.each do |r| %>
-    <p id="<%= r.id %>"><button><%= r.name %> </button></p>
+    <div class="rewards">
     <p><%= r.description %></p>
-    <p>$<%= r.amount %></p>
-    <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count)) %>
-
+    <p>$<%= r.amount %></p> 
+    <p id="<%= r.id %>"><button><%= r.name %> </button></p>
+    <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count)) %></p>
+    </div>
     <div id="dialog<%=r.id%>" title="Back this Campaign">
       <%= form_tag pledge_path(r.id),:remote => true, id: r.id do %>
           <div>
             <p>Reward Description:</p>
-            <br>
-            <br>
             <p><%=r.description%></p>
             <p>$<%=r.amount%></p>
-            <br><br><br>
+            <br><br>
             <p><%=submit_tag "Complete Pledge", class: "pledge_create"%></p>
           </div>
       <% end %>
