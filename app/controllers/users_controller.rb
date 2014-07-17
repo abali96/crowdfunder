@@ -18,7 +18,8 @@ def edit
 end
 
 def update
-  if @user.update_attributes(params[:user])
+  @user = User.find(params[:id])
+  if @user.update_attributes(user_params)
     redirect_to [:my, :campaigns], notice: "User Info Updated!"
   else
     render :edit

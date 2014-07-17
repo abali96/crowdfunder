@@ -1,4 +1,5 @@
 <div>
- <strong><%= link_to pledge.reward.campaign.name, [:my, pledge] %></strong><br/>
- <p>$<%= pledge.reward.amount %></p>
+ <strong><%= link_to pledge.campaign.name, campaign_path(pledge.campaign) %></strong>
+ <p>Reward: <%= pledge.reward.name %></p>
+ <p>Amount Donated: $<%= pledge.reward.amount %></p>
 </div>
