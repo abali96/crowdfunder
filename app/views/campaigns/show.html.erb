@@ -16,13 +16,7 @@
     <h1> Total earned to date: $<%= @totals %>
     </h1>
   </div>
-  <div>
-    <% if @pledge_status == true %>
-      <p> You have donated. </p>
-    <% else %>
-      <p> Do you want to donate? </p>
-    <% end %>
-  </div>
+
 
 <div id="rewards">
   <%= render 'rewards' %>
