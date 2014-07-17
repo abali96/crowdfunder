@@ -1,3 +1,8 @@
+<% total = 0 %>
+<% @campaign.rewards.each do |r| %>
+  <% total += (r.amount * r.pledges.count) %>
+<% end %>
+
 <section >
   <div class="campaign_title"> <%= @campaign.name %>
   </div>
@@ -10,7 +15,7 @@
     </div>
     <div class="large-4 columns campaign_info"> 
       <span class="campaign_header" id = "total_earned">
-        $<%= @campaign.total_earned%>
+        $<%= total %>
       </span>
       <p>pledged of $<%= @campaign.goal %> goal.</p>
         
@@ -23,7 +28,7 @@
         <p> days to go</p>
       <% end %>
 
-      <p style="font-size: .8rem;">Category: <%= @campaign.category %></p>
+      <p style="font-size: .8rem;">Category: <%= link_to @campaign.category, campaign_path %></p>
       <p style="font-size: .8rem;">Campaign was created by <%= @campaign.user.email %></p>
       <p style="font-size: .8rem;">Campaign will only be funded if goal is reached by: <%= @campaign.end_date %></p>
 
