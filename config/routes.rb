@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   resources :sessions
   resources :campaigns do
     resources :rewards
+    resources :comments
   end
 
   resources :users do
     resources :pledges
+    resources :comments
   end
 
   namespace :my do

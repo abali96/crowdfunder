@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718011014) do
+ActiveRecord::Schema.define(version: 20140718035854) do
 
   create_table "campaigns", force: true do |t|
     t.string   "name"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20140718011014) do
     t.time     "finish_time"
     t.string   "category"
     t.text     "pitch"
+  end
+
+  create_table "comments", force: true do |t|
+    t.text     "body"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "pledges", force: true do |t|

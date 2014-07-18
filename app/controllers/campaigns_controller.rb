@@ -14,6 +14,12 @@ class CampaignsController < ApplicationController
     @rewards = @campaign.rewards.all
     @pledges = Pledge.all
     @reward_campaign = @campaign.rewards
+    @comments = @campaign.comments.all
+
+    if current_user
+      @comment = @campaign.comments.build
+    end
+
     if current_user
       rewarded = current_user.rewards.select(:campaign_id, :id).distinct
       rewarded.each do |r|
