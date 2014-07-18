@@ -1,18 +1,31 @@
+<br>
 <h1> Discover Campaigns </h1>
+<br>
 <% @campaigns.each do |c| %>
   <h3><%= link_to c.name, campaign_path(c) %></h3>
-  <p>Tags:  <%= raw c.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%></p>
-  <div id="progressbar"></div>
-  var x = <%= (c.total_earned / c.goal) %>
+  <p>
+    <%= c.description %>
+    <br>
+    Tags:  <%= raw c.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%>
+  </p>
+  <div class="progressbar" data-value="<%= c.total_earned %>" data-max="<%= c.goal %>"></div>
+  <br>
 <% end %>
 
  
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
 <script>
- 
+  
   $(function() {
-    $( "#progressbar" ).progressbar({
-      value: x
+    $( ".progressbar" ).each(function() {
+      var self = $(this)
+          value = self.data('value'),
+          max = self.data('max');
+
+      self.progressbar({
+        value: value,
+        max: max
+      });
     });
   });
 
