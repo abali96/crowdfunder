@@ -1,9 +1,38 @@
+<span class="campaign_header" id = "total_earned">
+  $<%= @campaign.total_earned %>
+</span>
+<p>pledged of $<%= @campaign.goal %> goal.</p>
+
+<% if @campaign.end_date < Time.now %>
+  <p>Campaign over!</p>
+<% else %>
+  <span class="campaign_header">
+    <%= (@campaign.end_date - Date.today).round %>
+  </span>
+  <p> days to go</p>
+<% end %>
+
+<p style="font-size: .8rem;">Category: <%= link_to @campaign.category, category_path(@campaign.category) %></p>
+<p style="font-size: .8rem;">Tags: <%= raw @campaign.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%></p>
+<p style="font-size: .8rem;">Campaign was created by <%= @campaign.user.email %></p>
+
+<div id="campaign_status">
+  <% if @campaign.goal > @campaign.total_earned %>
+    <p style="font-size: .8rem;">Campaign will only be funded if goal is reached by: <%= @campaign.end_date %></p>
+  <% else %>
+    <p style="font-size: 3rem" class="highlight">Campaign funded!</p>
+  <% end %>
+</div>
 
 <div class="highlight">
-  <% if @pledge_status == true %>
-    <p> You have donated. Thank You! </p>
+  <% if current_user %>
+    <% if @pledge_status == true %>
+      <p> You have donated. Thank You! </p>
+    <% else %>
+      <p> Do you want to donate? </p>
+    <% end %>
   <% else %>
-    <p> Do you want to donate? </p>
+    <p><%= link_to "Log in", login_path %> to reap some rewards!</p>
   <% end %>
 </div>
 
@@ -14,12 +43,12 @@
     <div class="rewards" id="<%= r.id %>">
 <!-- Text to be shown over hover -->
     <span class="text-content"><span>Donate now!</span></span>
-    
+
     <br>
-    <p><%= r.description %></p>
-    <p>$<%= r.amount %></p> 
-    <p ><%= r.name %></p>
+    <p>Pledge $<%= r.amount %> for <%= r.name %></p>
     <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count)) %></p>
+    <p><%= r.description %></p>
+
     </div>
     <div id="dialog<%=r.id%>" title="Back this Campaign">
       <%= form_tag pledge_path(r.id),:remote => true, id: r.id do %>

@@ -4,7 +4,9 @@ class Campaign < ActiveRecord::Base
   has_many :users, through: :rewards
   belongs_to :user
   validates :name, :description, :goal, :start_date, :end_date, :category, :presence => true
+  validates :description, length: { maximum: 250 }
   validate :appropriate_dates
+  acts_as_taggable
 
   def total_earned
     total = 0

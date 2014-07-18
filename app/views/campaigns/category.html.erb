@@ -1,5 +1,4 @@
-<h1> Discover Campaigns </h1>
 <% @campaigns.each do |c| %>
-  <p><%= link_to c.name, campaign_path(c) %></p>
+  <h2><%= link_to c.name, campaign_path(c) %></h2>
   <p>Tags:  <%= raw c.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%></p>
 <% end %>

@@ -2,7 +2,11 @@ class CampaignsController < ApplicationController
   before_action :require_login, :except => [:show, :index]
   before_action :authenticate_creator, :only => [:edit, :update, :destroy]
   def index
-    @campaigns = Campaign.all
+    if params[:tag]
+      @campaigns = Campaign.tagged_with(params[:tag])
+    else
+      @campaigns = Campaign.all
+    end
   end
 
   def show
@@ -10,13 +14,15 @@ class CampaignsController < ApplicationController
     @rewards = @campaign.rewards.all
     @pledges = Pledge.all
     @reward_campaign = @campaign.rewards
-    rewarded = current_user.rewards.select(:campaign_id, :id).distinct
-    rewarded.each do |r|
-      if @campaign.id == r.campaign_id
-        @pledge_status = true
-        break
-      else
-        @pledge_status = false
+    if current_user
+      rewarded = current_user.rewards.select(:campaign_id, :id).distinct
+      rewarded.each do |r|
+        if @campaign.id == r.campaign_id
+          @pledge_status = true
+          break
+        else
+          @pledge_status = false
+        end
       end
     end
   end
@@ -50,11 +56,12 @@ class CampaignsController < ApplicationController
   end
 
   def category
+    @campaigns = Campaign.where(:category => params[:category])
   end
 
   private
   def campaign_params
-    params.require(:campaign).permit(:name, :description, :goal, :begin_time, :finish_time, :start_date, :end_date, :category, rewards_attributes: [:name, :description, :amount, :_destroy])
+    params.require(:campaign).permit(:name, :description, :goal, :begin_time, :finish_time, :start_date, :end_date, :category, :tag_list, rewards_attributes: [:name, :description, :amount, :_destroy])
   end
 
   def authenticate_creator

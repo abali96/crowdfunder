@@ -12,7 +12,7 @@
     </div>
     <br>
     <div class="large-10 columns">
-      <%= f.label :description %>
+      <%= f.label :description, "Description (Maximum 250 characters. We'll let you write the full pitch later!)" %>
       <%= f.text_field :description %>
     </div>
     <br>
@@ -34,6 +34,14 @@
     <div class="large-10 columns">
       <%= f.label :category %>
       <%= f.select :category, category_type %>
+    </div>
+    <div class="large-10 columns">
+      <%= f.label :tag_list, "Tags (separated by commas)" %>
+      <%= f.text_field :tag_list %>
+    </div>
+    <div class="large-10 columns">
+      <%= f.label :pitch %>
+      <%= f.text_area :pitch %>
     </div>
     <br>
     <div class="large-10 columns">

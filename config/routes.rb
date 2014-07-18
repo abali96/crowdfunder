@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'tags/:tag', to: 'campaigns#index', as: :tag
+  get 'categories/:category', to: 'campaigns#category', as: :category
   get 'troll/show'
 
   resources :sessions
   resources :campaigns do
     resources :rewards
   end
-  
+
   resources :users do
     resources :pledges
   end

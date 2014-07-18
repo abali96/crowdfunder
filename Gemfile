@@ -48,3 +48,4 @@ gem 'pry', group: [:development, :test]
 
 gem 'cocoon'
 gem 'faker'
+gem 'acts-as-taggable-on'
