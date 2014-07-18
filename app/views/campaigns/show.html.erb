@@ -10,11 +10,13 @@
       Insert Picture
     </div>
     <div class="large-8 columns new_comment_form">
-      <%= form_for [@campaign, @comment], :remote => true, id:"new_comment" do |f| %>
-        <div class="large-10 columns">
-          <%= f.label :body, "Comment" %>
-          <%= f.text_field :body %>
-        </div>
+      <% if current_user %>
+        <%= form_for [@campaign, @comment], :remote => true, id:"new_comment" do |f| %>
+          <div class="large-10 columns">
+            <%= f.label :body, "Comment" %>
+            <%= f.text_field :body %>
+          </div>
+         <% end %>
        <% end %>
     </div>
 
