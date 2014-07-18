@@ -1,24 +1,42 @@
-<h1>My Account Info</h1>
 <div>
-  <%= render @user %>
-<%= link_to 'Edit', edit_user_url(current_user) %>
+  <br>
+  <br>
+  <div class="row campaign">
+    <h1>My Account Info</h1>
+    <div class="large-10 columns">
+      <%= render @user %>
+    </div>
+    <div class="large-2 columns">
+      <%= link_to 'Edit Info', edit_user_url(current_user) %>
+    </div>
+  </div>
+  <br>
+  <br>
+  
+  <div class="row campaign">
+    <h1>My Campaigns</h1>
+    <div class="large-10 columns">
+      <%= render @campaigns %>
+      <%= link_to '+ New Campaign', [:new, :campaign], :class => "button [radius round]" %>
+    </div>
+  </div>
+  <br>
+  <br>
+  
+  <div class="row campaign">
+    <h1>Campaigns Backed</h1>
+    <%= render @pledges %>
+    <div class="large-12 columns">
+      <p class="text-center">-------------------------------------------------------------------------------------------------------------------------------------</p>
+      <% sum = 0 %>
+      <% @user.pledges.each do |p| %>
+        <% sum += p.reward.amount %>
+      <% end %>
+      <h3 class="text-center"><strong>Total Amount Donated: </strong>$<%= sum %></h3>
+      <br>
+      <br>
+    </div>
+  </div>
+  <br>
+  <br>
 </div>
-
-<h1>My Campaigns</h1>
-
-<div class="well">
- <%= link_to '+ New Campaign', [:new, :campaign]  , class: 'btn btn-small btn-primary pull-right' %>
-</div>
-
-<%= render @campaigns %>
-
-<h1>Campaigns Backed</h1>
-
-<%= render @pledges %>
-<p>-----------------------------------------------------</p>
-
-<% sum = 0 %>
-<% @user.pledges.each do |p| %>
-  <% sum += p.reward.amount %>
-<% end %>
-<p><strong>Total Amount Donated: </strong><%= sum %></p>

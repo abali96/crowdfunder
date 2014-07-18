@@ -5,7 +5,7 @@ class My::CampaignsController < ApplicationController
   def index
     @user = current_user
     @campaigns = current_user.campaigns.order('campaigns.created_at DESC').all
-    @pledges = current_user.pledges.order('pledges.created_at DESC').all
+    @pledges = current_user.pledges.uniq
   end
 
   def new
