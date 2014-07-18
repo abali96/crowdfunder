@@ -4,11 +4,20 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @commentable.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @user = User.find(current_user)
+    @comment.user_id = @user.id
+    @comments = @commentable.comments
 
-    if @comment.save
-      redirect_to :back
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to :back }
+        format.js {}
+      else
+        format.html { redirect_to :root_path, :notice => "Error in creating comment" }
+        format.js {}
+      end
     end
+
   end
 
   def edit

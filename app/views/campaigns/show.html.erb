@@ -10,7 +10,7 @@
       Insert Picture
     </div>
     <div class="large-8 columns new_comment_form">
-      <%= form_for [@campaign, @comment] do |f| %>
+      <%= form_for [@campaign, @comment], :remote => true, id:"new_comment" do |f| %>
         <div class="large-10 columns">
           <%= f.label :body, "Comment" %>
           <%= f.text_field :body %>
@@ -18,7 +18,7 @@
        <% end %>
     </div>
 
-    <div class="large-8 columns campaign_comments">
+    <div class="large-8 columns" id="campaign_comments">
       <%= render 'comments' %>
     </div>
 
