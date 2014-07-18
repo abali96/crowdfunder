@@ -11,12 +11,12 @@
     <%= csrf_meta_tags %>
     <%= javascript_include_tag "application" %>
 
-    
+
   </head>
 
   <body>
     <div class="fixed">
-     
+
         <nav class="top-bar" data-topbar>
           <ul class="title-area">
             <li class="name">
@@ -30,7 +30,7 @@
                 <li class="has-dropdown">
                   <a href="#"><%= current_user.email %></a>
                   <!-- <%= link_to "Info", [:my, :campaigns] %> -->
-                  
+
                   <ul class="dropdown">
                     <li><%= link_to "Account Info", [:my, :campaigns] %></li>
                     <li> <%= link_to "Logout", logout_path %> </li>
@@ -41,17 +41,18 @@
                 <li><%= link_to "Log In", login_path %></li>
               <% end %>
             </ul>
-          
+
           <!-- Left Nav Section -->
           <ul class="left">
             <li><%= link_to "Campaigns", campaigns_path %></li>
+            <li><%= link_to "Popular", popular_path %></li>
           </ul>
           </section>
         </nav>
-    
+
     </div>
-    
+
     <%= yield %>
-    
+
   </body>
 </html>
