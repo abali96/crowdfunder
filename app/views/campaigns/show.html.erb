@@ -7,23 +7,28 @@
 
   <div class="row campaign">
 
-    <div class="campaign_pic large-8 columns">
-      Insert Picture
-      <p><%= @campaign.pitch %></p>
-    </div>
-    <div class="large-8 columns new_comment_form">
-      <% if current_user %>
-        <%= form_for [@campaign, @comment], :remote => true, id:"new_comment" do |f| %>
-          <div class="large-10 columns">
-            <%= f.label :body, "Comment" %>
-            <%= f.text_field :body %>
-          </div>
-         <% end %>
-       <% end %>
-    </div>
+    <div class="large-8 columns">
+      <div class="campaign_pic">
+        Insert Picture
+      </div>
+      <div class="campaign_description">
+        <p><%= @campaign.pitch %></p>
+      </div>
+      
+      <div id="campaign_comments">
+        <%= render 'comments' %>
+      </div>
 
-    <div class="large-8 columns" id="campaign_comments">
-      <%= render 'comments' %>
+      <div class="new_comment_form">
+        <% if current_user %>
+          <%= form_for [@campaign, @comment], :remote => true, id:"new_comment" do |f| %>
+            <div class="large-10 columns">
+              <%= f.label :body, "Comment" %>
+              <%= f.text_field :body %>
+            </div>
+           <% end %>
+         <% end %>
+      </div>
     </div>
 
     <div class="large-4 columns campaign_info">
@@ -32,5 +37,5 @@
       </div>
     </div>
 
-  </div>
+ </div>
 </section>

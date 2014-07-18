@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140718131924) do
     t.date     "end_date"
     t.time     "finish_time"
     t.string   "category"
+    t.string   "avatar"
     t.text     "pitch"
     t.boolean  "funded_status",             default: false
   end
