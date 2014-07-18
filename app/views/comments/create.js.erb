@@ -1,2 +1,7 @@
-$("#campaign_comments").html('<%= j(render :partial => "/campaigns/comments") %>')
+<% if params[:campaign_id] %>
+  $("#campaign_comments").html('<%= j(render :partial => "/campaigns/comments") %>')
+<% else %>
+  $("#user_comments").html('<%= j(render :partial => "/users/comments") %>')
+<% end %>
+
 $("#new_comment")[0].reset();

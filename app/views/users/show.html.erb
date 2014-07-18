@@ -1,6 +1,6 @@
 <h1><%= @user.email %></h1>
 <div class="large-8 columns new_comment_form">
-  <%= form_for [@user, @comment] do |f| %>
+  <%= form_for [@user, @comment], :remote => true do |f| %>
     <div class="large-10 columns">
       <%= f.label :body, "Comment" %>
       <%= f.text_field :body %>
@@ -8,6 +8,6 @@
    <% end %>
 </div>
 <br>
-<div class="large-8 columns user_comments">
+<div class="large-8 columns" id="user_comments">
   <%= render 'comments' %>
 </div>
