@@ -1,4 +1,4 @@
-<h1>Projects that have been funded</h1>
+<h1>Campaigns that have been funded</h1>
   <% if @funded_array.count > 0 %>
     <% @funded_array.each do |f| %>
       <h3><%= link_to f.name, campaign_path(f) %></h3>
@@ -9,7 +9,7 @@
     <p>No campaign has been funded yet!</p>
 <% end %>
 
-<h1>Projects with the most backers</h1>
+<h1>Campaigns with the most backers</h1>
 <% @backed.each do |b| %>
   <h3><%= link_to b.name, campaign_path(b) %></h3>
   <p><%= b.number_of_backers %> backers</p>
