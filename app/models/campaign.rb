@@ -17,6 +17,14 @@ class Campaign < ActiveRecord::Base
     total
   end
 
+  def number_of_backers
+    total = 0
+    self.rewards.each do |r|
+      total += r.pledges.count
+    end
+    total
+  end
+
   def appropriate_dates
   if start_date && end_date
     if start_date > end_date

@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718035854) do
+ActiveRecord::Schema.define(version: 20140718131924) do
 
   create_table "campaigns", force: true do |t|
     t.string   "name"
     t.integer  "goal"
-    t.text     "description", limit: 255
+    t.text     "description",   limit: 255
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "user_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140718035854) do
     t.time     "finish_time"
     t.string   "category"
     t.text     "pitch"
+    t.boolean  "funded_status",             default: false
   end
 
   create_table "comments", force: true do |t|

@@ -2,6 +2,8 @@
   $<%= @campaign.total_earned %>
 </span>
 <p>pledged of $<%= @campaign.goal %> goal.</p>
+<span class="campaign_header"><%= @campaign.number_of_backers %></span>
+<p>backers</p>
 
 <% if @campaign.end_date < Time.now %>
   <p>Campaign over!</p>
