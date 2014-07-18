@@ -1,3 +1,4 @@
+<div class="rewards">
 <span class="campaign_header" id = "total_earned">
   $<%= @campaign.total_earned %>
 </span>
@@ -37,19 +38,22 @@
     <p><%= link_to "Log in", login_path %> to reap some rewards!</p>
   <% end %>
 </div>
-
+</div>
 <h2>Rewards</h2>
 
   <% @total = 0 %>
   <% @rewards.each do |r| %>
-    <div class="rewards" id="<%= r.id %>">
+    <div id="<%= r.id %>">
+    <div class="rewards">
 <!-- Text to be shown over hover -->
     <span class="text-content"><span>Donate now!</span></span>
 
     <br>
+    
     <p>Pledge $<%= r.amount %> for <%= r.name %></p>
     <p>Number claimed <%= ((@pledges.where(:reward_id => r.id).count)) %></p>
     <p><%= r.description %></p>
+    </div>
 
     </div>
     <div id="dialog<%=r.id%>" title="Back this Campaign">

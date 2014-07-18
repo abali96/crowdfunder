@@ -39,11 +39,11 @@
 }
 
 .campaign_info {
-
+  position: relative;
 }
 
 .campaign_header {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .campaign_pic {
@@ -53,9 +53,10 @@
 .rewards {
   background: #F7FAFA;
   position: relative;
-  height: 300px;
-
+  height: 480px;
 }
+
+
 
 .hidden {
   display: none;
@@ -86,9 +87,6 @@ span.text-content span {
   font-size: 3rem;
 }
 
-// span.text-content.active span.text-content{
-//   opacity: 1;
-// }
 
 .rewards.active span.text-content{
   opacity: 1;
