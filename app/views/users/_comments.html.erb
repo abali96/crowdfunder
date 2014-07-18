@@ -1,0 +1,9 @@
+<% @comments.each do |c| %>
+  <%= c.body %> <br>
+  <% if c.commentable != nil %>
+  <em> by <%= User.find(c.user_id).email %></em>
+  | Added on: <%= c.created_at %>
+  <br>
+  <br>
+<% end %>
+<% end %>

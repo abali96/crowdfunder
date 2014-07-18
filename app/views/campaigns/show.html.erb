@@ -1,10 +1,11 @@
 <section>
   <div class="campaign_title"> <%= @campaign.name %>
   </div>
-  <div class="campaign_user"> Created by: <%= @campaign.user.email %>
+  <div class="campaign_user"> Created by: <%= link_to @campaign.user.email, user_path(@campaign.user) %>
   </div>
 
   <div class="row campaign">
+
     <div class="campaign_pic large-8 columns">
       Insert Picture
     </div>
@@ -17,14 +18,15 @@
        <% end %>
     </div>
 
-    <div class="large-8 columns all_comments">
+    <div class="large-8 columns campaign_comments">
       <%= render 'comments' %>
     </div>
-    <div class="large-4 columns campaign_info">
 
+    <div class="large-4 columns campaign_info">
       <div id="sidebar">
         <%= render 'sidebar' %>
       </div>
     </div>
+
   </div>
 </section>
