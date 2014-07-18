@@ -15,6 +15,34 @@
  *= require foundation_and_overrides
 
  */
+
+html, body, .container {
+  height: 100%;
+}
+
+body > .container {
+  height: auto;
+  min-height: 100%;
+}
+
 #funder {
   color: #2bde73;
+}
+
+#footer {
+  clear: both;
+  position: relative;
+  z-index: 10;
+  margin-top: -3rem;
+  width:100%;
+  height:3rem;   /* Height of the footer */
+  background:#dedfdc;
+}
+
+.container {
+  padding-bottom: 3rem;
+}
+
+.wrapper {
+  position: relative;
 }

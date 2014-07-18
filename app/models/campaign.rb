@@ -14,7 +14,6 @@ class Campaign < ActiveRecord::Base
     total
   end
 
-
   def appropriate_dates
   if start_date && end_date
     if start_date > end_date
