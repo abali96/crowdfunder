@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'campaigns#index', as: :tag
   get 'categories/:category', to: 'campaigns#category', as: :category
+  get 'popular', to: 'campaigns#popular', as: :popular
   get 'troll/show'
 
   resources :sessions

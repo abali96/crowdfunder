@@ -26,10 +26,17 @@ class Campaign < ActiveRecord::Base
   end
 
   def appropriate_dates
-  if start_date && end_date
-    if start_date > end_date
-      errors.add(:base, "You can't end your campaign before it starts!")
+    if start_date && end_date
+      if start_date > end_date
+        errors.add(:base, "You can't end your campaign before it starts!")
+      end
     end
   end
+
+  def funded_status
+    if self.goal < self.total_earned
+      funded_status = true
+    end
+    funded_status
   end
 end
