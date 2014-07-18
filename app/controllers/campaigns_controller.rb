@@ -75,7 +75,6 @@ class CampaignsController < ApplicationController
     @backed = Campaign.all.sort_by { |b| -1*b.number_of_backers }
   end
 
-
   private
   def campaign_params
     params.require(:campaign).permit(:name, :description, :goal, :begin_time, :finish_time, :start_date, :end_date, :category, :tag_list, :popular, :pitch, rewards_attributes: [:name, :description, :amount, :_destroy])

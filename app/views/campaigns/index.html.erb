@@ -2,4 +2,53 @@
 <% @campaigns.each do |c| %>
   <h3><%= link_to c.name, campaign_path(c) %></h3>
   <p>Tags:  <%= raw c.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%></p>
+  <div id="progressbar"></div>
 <% end %>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script>
+  var x = @campaign.total_earned / @campaign.goal
+  $(function() {
+    $( "#progressbar" ).progressbar({
+      value: x
+    });
+  });
+
+
+$(function() {  
+  $('.progress_bar').each(function() {
+var progressbar = $(this),
+      progressLabel = $(this).find( ".progress-label" ),
+    progressvalue = $(this).attr('value');
+console.log(progressvalue);     
+      
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+       
+        progressLabel.text( progressbar.progressbar( "value" ) + "% Complete" );
+      },
+      complete: function() {
+        progressLabel.text( "Complete!" );
+      }
+    });
+ 
+    function progress() {
+                
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + 1 )
+        .removeClass("beginning middle end")
+        .addClass(val < 40 ? "beginning" : val < 80 ? "middle" : "end");
+        
+ 
+      if ( val < progressvalue ) {
+        setTimeout( progress, 100 );
+      }
+    }
+ 
+    setTimeout( progress, 100 );
+       });
+    });
+</script>

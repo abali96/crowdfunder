@@ -15,6 +15,7 @@
   </head>
 
   <body>
+    <div class="container">
     <div class="fixed">
 
         <nav class="top-bar" data-topbar>
@@ -51,8 +52,14 @@
         </nav>
 
     </div>
-
-    <%= yield %>
+    
+      <%= yield %>
+      
+       </div>
+      <div id="footer">
+        <%= link_to "Home", root_url %>
+        <%= link_to "About", pages_about_url %>
+      </div>
 
   </body>
 </html>
