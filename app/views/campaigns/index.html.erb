@@ -9,6 +9,33 @@
     Tags:  <%= raw c.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%>
   </p>
   <div class="progressbar" data-value="<%= c.total_earned %>" data-max="<%= c.goal %>"></div>
+
+    <div class="row left full-width">
+      <p class="small-1 columns">
+        <strong><%= (c.total_earned.to_f / c.goal)*100 %>%</strong>
+        <br> funded 
+      </p>
+      <p class="small-1 columns">
+        <strong>$<%= c.total_earned %></strong>
+        <br> pledged
+      </p>
+      <p class="small-1 columns">
+        <strong><%= c.number_of_backers %></strong>
+        <br> backers
+      </p>
+      <p class="small-1 columns">
+        <% if c.end_date < Time.now %>
+          <strong><p>Campaign over!</p></strong>
+        <% else %>
+          <strong><%= (c.end_date - Date.today).round %></strong>
+          <br> days to go
+        <% end %>
+      </p>
+      <p class="small-1 columns"></p>
+    </div>
+  <br>
+  <br>
+  <br>
   <br>
 <% end %>
 
